@@ -5,17 +5,20 @@ using UnityEngine;
 public class LegMove : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject mouseTracker;
-    Rigidbody rb_knee;
+    public GameObject mouseTracker;
+    Rigidbody rb_thigh;
     // Rigidbody rb_
-    void Start()
+    void Awake()
     {
-        
+        rb_thigh = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (Input.GetMouseButtonDown(0)) // User clicked Primary button
+        {
+            rb_thigh.AddForce(mouseTracker.GetComponent<MouseMovement>().delta * mouseTracker.GetComponent<MouseMovement>().mouseCursorSpeed);
+        }
     }
 }
