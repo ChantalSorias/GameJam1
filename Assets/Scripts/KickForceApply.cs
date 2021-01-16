@@ -27,6 +27,7 @@ public class KickForceApply : MonoBehaviour
     {
         ContactPoint contact = collision.GetContact(0);
         rb.AddForceAtPosition(contact.normal * thrust,contact.point,ForceMode.Force);
+        rb.useGravity = true;
         kicked = true;
     }
 
@@ -36,6 +37,7 @@ public class KickForceApply : MonoBehaviour
         rb.velocity = Vector3.zero;
         rb.rotation = Quaternion.identity;
         kicked = false;
+        rb.useGravity = false;
         score = 0;
     }
 
